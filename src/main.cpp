@@ -35,45 +35,32 @@ void setup()
     delay(1000);
   }
   Serial.println("CAN BUS Shield init ok!");
-  radio.begin();
-  radio.openWritingPipe(address);
-  radio.setPALevel(RF24_PA_MIN);
-  radio.stopListening();
 
+  radio.begin();
+  radio.setChannel(120);
+  radio.openReadingPipe(0, address);
+  //radio.openReadingPipe(1, Controler_2_Address);
+
+  radio.setPALevel(RF24_PA_MIN);
+  radio.startListening();
+  Serial.println("startup done");
 }
 
 void loop()
 {
   unsigned char len = 0;
   unsigned char buf[8];
-  //delay(1000);
-  if (CAN_MSGAVAIL == CAN.checkReceive()) // check if data coming
+  if (radio.available())
   {
-    CAN.readMsgBuf(&len, buf); // read data,  len: data length, buf: data buf
 
-    unsigned int canId = CAN.getCanId();
-    if (canId == 0x190 && buf[0] == 0x30)
+    radio.read(&buf, sizeof(buf));
+    Serial.println("-----------------------------");
+    Serial.print(" ");
+    for (int i = 0; i < 7; i++) // print the data
     {
-      Serial.println("-----------------------------");
-      Serial.print("Get data from ID: ");
-      Serial.print(canId, HEX);
-      Serial.print(" ");
-      for (int i = 0; i < len; i++) // print the data
-      {
 
-        Serial.print(buf[i], HEX);
-        Serial.print("\t");
-      }
-      radio.write(&buf, sizeof(buf));
-      // LoRa.beginPacket();
-      // for (int i = 0; i < len; i++) // print the data
-      // {
-
-      //   LoRa.print(buf[i], HEX);
-      //   LoRa.print("\t");
-      // }
-      // LoRa.endPacket();
-      //Serial.println();
+      Serial.print(buf[i], HEX);
+      Serial.print("\t");
     }
   }
 
