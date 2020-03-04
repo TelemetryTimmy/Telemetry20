@@ -16,7 +16,7 @@ const byte address[6] = "00001";
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial)
     ;
 
@@ -64,7 +64,18 @@ void loop()
         Serial.print(buf[i], HEX);
         Serial.print("\t");
       }
-      radio.write(&buf, sizeof(buf));
+      if( !radio.write(&buf, sizeof(buf)))
+      {
+        Serial.println("Radio error");
+        while(1){}
+      }
+      else
+      {
+      Serial.println("data sent");
+        /* code */
+      }
+      
+      delay(500);
       // LoRa.beginPacket();
       // for (int i = 0; i < len; i++) // print the data
       // {
