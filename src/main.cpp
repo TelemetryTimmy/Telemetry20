@@ -29,7 +29,11 @@ void setup()
   // }
 
 
-  radio.begin();
+  if (!radio.begin())
+  {
+    Serial.println("Radio Error");
+    while(1){}
+  }
   radio.setChannel(120);
   radio.openReadingPipe(0, address);
   //radio.openReadingPipe(1, Controler_2_Address);
@@ -56,6 +60,12 @@ void loop()
       Serial.print("\t");
     }
   }
+  else
+  {
+    Serial.println("No Data");
+    delay(1000);
+  }
+  
 
   //delay(5000);
 }
