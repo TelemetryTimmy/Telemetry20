@@ -17,8 +17,7 @@ const byte address[6] = "00001";
 void setup()
 {
   Serial.begin(9600);
-  while (!Serial)
-    ;
+  while (!Serial);
 
   // Serial.println("LoRa Sender");
   // LoRa.setPins(8, 9, 2);
@@ -28,13 +27,7 @@ void setup()
   //   while (1)
   //     ;
   // }
-  while (CAN_OK != CAN.begin(CAN_1000KBPS)) // init can bus : baudrate = 500k
-  {
-    Serial.println("CAN BUS Shield init fail");
-    Serial.println(" Init CAN BUS Shield again");
-    delay(1000);
-  }
-  Serial.println("CAN BUS Shield init ok!");
+
 
   radio.begin();
   radio.setChannel(120);
