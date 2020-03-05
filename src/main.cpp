@@ -11,8 +11,14 @@ const int SPI_CS_PIN = 10;
 
 MCP_CAN CAN(SPI_CS_PIN);
 
-RF24 radio(7, 8); // CE, CSN
-const byte address[6] = "00001";
+RF24 radio(7, 8);                                           // CE, CSN
+const uint64_t pipes[2] = {0xABCDABCD71LL, 0x544d52687CLL}; // Radio pipe addresses for the 2 nodes to communicate.
+
+byte data[32]; //Data buffer for testing data transfer speeds
+
+unsigned long counter, rxTimer; //Counter and timer for keeping track transfer info
+unsigned long startTime, stopTime;
+bool TX = 1, RX = 0, role = 0;
 
 void setup()
 {
@@ -36,10 +42,16 @@ void setup()
   }
   Serial.println("CAN BUS Shield init ok!");
   radio.begin();
-  radio.openWritingPipe(address);
-  radio.setPALevel(RF24_PA_MIN);
-  radio.stopListening();
+  radio.setChannel(1);
+  radio.setPALevel(RF24_PA_HIGH);
+  radio.setDataRate(RF24_1MBPS);
+  radio.setAutoAck(1);     // Ensure autoACK is enabled
+  radio.setRetries(2, 15); // Optionally, increase the delay between retries & # of retri
+  radio.setCRCLength(RF24_CRC_8);          // Use 8-bit CRC for performance
 
+  radio.openWritingPipe(pipes[0]);
+  radio.stopListening();
+  radio.powerUp();                         //Power up the radio
 }
 
 void loop()
@@ -60,33 +72,17 @@ void loop()
       Serial.print(" ");
       for (int i = 0; i < len; i++) // print the data
       {
-
         Serial.print(buf[i], HEX);
         Serial.print("\t");
       }
-      if( !radio.write(&buf, sizeof(buf)))
+      if (!radio.writeFast(&buf, 32))
       {
         Serial.println("Radio error");
-        while(1){}
       }
       else
       {
-      Serial.println("data sent");
-        /* code */
+        Serial.println("data sent");
       }
-      
-      delay(500);
-      // LoRa.beginPacket();
-      // for (int i = 0; i < len; i++) // print the data
-      // {
-
-      //   LoRa.print(buf[i], HEX);
-      //   LoRa.print("\t");
-      // }
-      // LoRa.endPacket();
-      //Serial.println();
     }
   }
-
-  //delay(5000);
 }
