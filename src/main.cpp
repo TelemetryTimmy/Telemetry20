@@ -26,14 +26,6 @@ void setup()
   while (!Serial)
     ;
 
-  // Serial.println("LoRa Sender");
-  // LoRa.setPins(8, 9, 2);
-  // if (!LoRa.begin(915E6))
-  // {
-  //   Serial.println("Starting LoRa failed!");
-  //   while (1)
-  //     ;
-  // }
   while (CAN_OK != CAN.begin(CAN_1000KBPS)) // init can bus : baudrate = 500k
   {
     Serial.println("CAN BUS Shield init fail");
