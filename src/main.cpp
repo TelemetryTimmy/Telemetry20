@@ -16,7 +16,7 @@ const byte address[6] = "00001";
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);
 
   // Serial.println("LoRa Sender");
@@ -60,11 +60,11 @@ void loop()
       Serial.print("\t");
     }
   }
-  else
-  {
-    Serial.println("No Data");
-    delay(1000);
-  }
+  // else
+  // {
+  //   Serial.println("No Data");
+  //   delay(1000);
+  // }
   
 
   //delay(5000);
