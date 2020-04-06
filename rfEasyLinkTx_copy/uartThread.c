@@ -65,8 +65,8 @@ void *uartThread(void *arg0)
         {
             UART_write(uart, &buffer, i);
             i = 0;
-            buffer[i] = '\x00';
-            UART_write(uart, "\x0d", 1);
+            buffer[i] = '\x0d';
+//            UART_write(uart, "\x0d", 1);
             mq_send(*mqdes , (char *)buffer, sizeof(buffer), 0);
         }
         i++;
@@ -74,19 +74,19 @@ void *uartThread(void *arg0)
 }
 
 
-extern mqd_t *MQ_Uart_Sent;
+extern mqd_t MQ_Uart_Sent;
 
 void *uartsendThread(void *arg0)
 {
     char msg[128];
     while (1)
     {
-        mq_receive(*MQ_Uart_Sent, (char *)msg, sizeof(msg), NULL);
+        mq_receive(MQ_Uart_Sent, (char *)msg, sizeof(msg), NULL);
         UART_write(uart, msg, 1);
     }
 }
 
 void SerialWrite(char* message)
 {
-    mq_send(*MQ_Uart_Sent , (char *)message, sizeof(message), 0);
+    mq_send(MQ_Uart_Sent , (char *)message, sizeof(message), 0);
 }

@@ -20,8 +20,6 @@ var DriverLib = scripting.addModule("/ti/devices/DriverLib", {}, false);
 CCFG.xoscCapArray = true;
 // XOSC Cap Array Delta - Modify the high frequency oscillator cap-array, changing the frequency offset
 CCFG.xoscCapArrayDelta = 0xC1;
-// Enable Bootloader - Enable ROM Bootloader, for flashing from external host
-CCFG.enableBootloader = true;
 // Enable Bootloader Backdoor - When enabling the Bootloader Backdoor, the Bootloader can be activated externally by pulling a pin, even when a valid flash image is present. Note, enabling the backdoor allows an external host to read back a flash image from the device
 CCFG.enableBootloaderBackdoor = true;
 // Bootloader Backdoor DIO - DIO (pin) to trigger Bootloader backdoor, this pin is only needed at boot

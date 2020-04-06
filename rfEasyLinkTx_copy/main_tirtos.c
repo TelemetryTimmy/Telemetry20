@@ -21,13 +21,14 @@
 //extern void *uartThread(void *arg0);
 
 /* Stack size in bytes */
-#define THREADSTACKSIZE    1024
+#define THREADSTACKSIZE    850
 
 // Message Queue's
 #define MSG_SIZE (sizeof(uint8_t)*UARTBUFFERSIZE)
 #define MSG_NUM  4
 
 mqd_t MQ_UartOUT_RfIN;// message q to send to RF thread from uart thread
+mqd_t MQ_Uart_Sent;
 
 
 /*
@@ -35,7 +36,7 @@ mqd_t MQ_UartOUT_RfIN;// message q to send to RF thread from uart thread
  */
 int main(void)
 {
-    pthread_t           UART,rfThread;
+    pthread_t           UART,rfThread,UARTSend;
     pthread_attr_t      attrs;
     struct sched_param  priParam;
     int                 retc;
@@ -43,11 +44,20 @@ int main(void)
 
     /* Call driver init functions */
     Board_init();
+
+
     /* Message Queue init */
     mqAttrs_UartOUT_RfIN.mq_maxmsg = MSG_NUM;
     mqAttrs_UartOUT_RfIN.mq_msgsize = MSG_SIZE;
     mqAttrs_UartOUT_RfIN.mq_flags = 0;
-    MQ_UartOUT_RfIN = mq_open ("alarm", O_RDWR | O_CREAT,
+    MQ_UartOUT_RfIN = mq_open ("uart", O_RDWR | O_CREAT,
+                    0664, &mqAttrs_UartOUT_RfIN);
+    if (MQ_UartOUT_RfIN == (mqd_t)-1) {
+      /* mq_open() failed */
+      while (1);
+    }
+
+    MQ_Uart_Sent = mq_open ("alarm", O_RDWR | O_CREAT,
                     0664, &mqAttrs_UartOUT_RfIN);
     if (MQ_UartOUT_RfIN == (mqd_t)-1) {
       /* mq_open() failed */
@@ -72,8 +82,16 @@ int main(void)
         while (1) {}
     }
     /* Set UART thread Priority and create thread */
-    priParam.sched_priority = 2;
+
+    priParam.sched_priority = 3;
     retc = pthread_create(&UART, &attrs, uartThread, (void *)&MQ_UartOUT_RfIN);
+    if (retc != 0) {
+        /* pthread_create() failed */
+        while (1) {}
+    }
+
+    priParam.sched_priority = 2;
+    retc = pthread_create(&UARTSend, &attrs, uartsendThread, NULL);
     if (retc != 0) {
         /* pthread_create() failed */
         while (1) {}
