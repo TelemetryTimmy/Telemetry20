@@ -156,7 +156,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@$(MAKE) --no-print-directory -Onone "rfEasyLinkTx_copy.out"
 
 dependents:
-	-cd C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug && $(MAKE) clean all
+	-cd C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug && $(MAKE) all
 
 # Tool invocations
 rfEasyLinkTx_copy.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs.lib

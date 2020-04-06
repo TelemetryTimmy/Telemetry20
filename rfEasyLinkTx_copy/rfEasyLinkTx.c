@@ -80,8 +80,8 @@ void RXSetup(void)
 
 void *rfEasyLinkTxFnx(void *arg0)
 {
-    uint8_t txBurstSize = 0;
-    uint32_t absTime;
+//    uint8_t txBurstSize = 0;
+//    uint32_t absTime;
     mqd_t      *mqdes = arg0;
 
     RXSetup();
@@ -110,8 +110,8 @@ void *rfEasyLinkTxFnx(void *arg0)
         EasyLink_TxPacket txPacket =  { {0}, 0, 0, {0} };
 
         msgLength = mq_receive(*mqdes, (char *)&msg, sizeof(msg), NULL);
-        int j=1;
-        for ( j; j < msgLength; j++)
+        int j;
+        for ( j=1; j < msgLength; j++)
         {
             txPacket.payload[j-1] = msg[j];
         }

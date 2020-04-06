@@ -61,7 +61,7 @@ void *uartThread(void *arg0)
         buffer[i] = input;
         UART_write(uart, &input, 1);
 
-        if ((char*)buffer[i] == '\x0d')
+        if (buffer[i] == '\x0d')
         {
             UART_write(uart, &buffer, i);
             i = 0;

@@ -42,4 +42,5 @@ void *mainThread(void *arg0)
 //        sleep(time);
 //        GPIO_toggle(CONFIG_GPIO_LED_0);
 //    }
+    return 0;
 }
