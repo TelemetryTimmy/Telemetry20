@@ -61,16 +61,17 @@ void *uartThread(void *arg0)
         UART_read(uart, &input, 1);
 
         buffer[i] = input;
-        UART_write(uart, &input, 1);
+        if (input != '\x0d')
+            UART_write(uart, &input, 1);
 
         if (buffer[i] == '\x0d')
         {
 //            UART_write(uart, &buffer, i);
             i = 0;
             buffer[i] = '\x0d';
-            UART_write(uart, "\x0d", 1);
+//            UART_write(uart, "\x0d", 1);
             reasult = mq_send(*mqdes , (char *)buffer, sizeof(buffer), 0);
-            SerialWrite("message sent to radio\n\0");
+//            SerialWrite("message sent to radio\n\0");
         }
         i++;
     }

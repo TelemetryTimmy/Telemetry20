@@ -34,7 +34,7 @@
 
 // Message Queue's
 #define MSG_SIZE (sizeof(uint8_t)*UARTBUFFERSIZE)
-#define MSG_NUM  12
+#define MSG_NUM  100
 
 mqd_t MQ_UartOUT_RfIN;// message q to send to RF thread from uart thread
 mqd_t MQ_Uart_Sent;

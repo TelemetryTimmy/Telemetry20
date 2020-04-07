@@ -68,22 +68,27 @@ static Semaphore_Handle rxDoneSem;
 
 void rxDoneCb(EasyLink_RxPacket *rxPacket, EasyLink_Status status)
 {
+    uint32_t i;
     if (status == EasyLink_Status_Success)
     {
         /* Toggle RLED to indicate RX */
         PIN_setOutputValue(pinHandle, CONFIG_PIN_RLED, !PIN_getOutputValue(CONFIG_PIN_RLED));
         //                  Display_open(Display_Type_UART, &params);
         //                  Display_printf(display, 1, 0, "Received message %d", message_count++);
-        SerialWrite("Received message: ");
+//        SerialWrite("Received message: ");
         //            for (uint8_t i = 0; i < rxPacket.len; i++)
         //            {
         //                radio_
         //            }
+        for (i = 0; i < (77 - rxPacket->len); i++)
+        {
+            SerialWrite(" ");
+        }
         SerialWrite((char *)rxPacket->payload);
         SerialWrite("\n");
         //                  Display_printf(display, 0, 0, "message payload %s, Packet Length = %d", rxPacket.payload,rxPacket.len);
         //                  Display_close(display);
-        uint32_t i;
+
         for (i = 0; i < EASYLINK_MAX_DATA_LENGTH; i++)
         {
             rxPacket->payload[i] = '\0';
@@ -192,12 +197,12 @@ void *rfEasyLinkTxFnx(void *arg0)
             if (result == EasyLink_Status_Success)
             {
                 /* Toggle GLED to indicate TX */
-                SerialWrite("RX Success\n");
+                SerialWrite("\033[32m | RX Success |\033[m\n");
                 //            PIN_setOutputValue(pinHandle, CONFIG_PIN_GLED,!PIN_getOutputValue(CONFIG_PIN_GLED));
             }
             else
             {
-                SerialWrite("Rx Fail\n");
+                SerialWrite("\033[31m | Rx Fail |\033[m\n");
                 /* Toggle GLED and RLED to indicate error */
                 //            PIN_setOutputValue(pinHandle, CONFIG_PIN_GLED,!PIN_getOutputValue(CONFIG_PIN_GLED));
                 //            PIN_setOutputValue(pinHandle, CONFIG_PIN_RLED,!PIN_getOutputValue(CONFIG_PIN_RLED));
