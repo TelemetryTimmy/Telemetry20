@@ -206,10 +206,10 @@ rfEasyLinkTx.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include
 rfEasyLinkTx.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/sys/_timespec.h
 rfEasyLinkTx.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/posix/ccs/pthread.h
 rfEasyLinkTx.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/posix/ccs/sched.h
-rfEasyLinkTx.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/PIN.h
-rfEasyLinkTx.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdbool.h
 rfEasyLinkTx.obj: C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/rfEasyLinkTx_copy/Debug/syscfg/ti_drivers_config.h
 rfEasyLinkTx.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/DeviceFamily.h
+rfEasyLinkTx.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/PIN.h
+rfEasyLinkTx.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdbool.h
 rfEasyLinkTx.obj: ../easylink/EasyLink.h
 rfEasyLinkTx.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/rf/RF.h
 rfEasyLinkTx.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/rf/RFCC26X2.h
@@ -431,10 +431,10 @@ C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/../include/sys/ti
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/sys/_timespec.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/posix/ccs/pthread.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/posix/ccs/sched.h: 
-C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/PIN.h: 
-C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdbool.h: 
 C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/rfEasyLinkTx_copy/Debug/syscfg/ti_drivers_config.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/DeviceFamily.h: 
+C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/PIN.h: 
+C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdbool.h: 
 ../easylink/EasyLink.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/rf/RF.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/rf/RFCC26X2.h: 

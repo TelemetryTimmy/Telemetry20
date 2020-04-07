@@ -63,11 +63,12 @@ void *uartThread(void *arg0)
 
         if (buffer[i] == '\x0d')
         {
-            UART_write(uart, &buffer, i);
+//            UART_write(uart, &buffer, i);
             i = 0;
             buffer[i] = '\x0d';
-//            UART_write(uart, "\x0d", 1);
+            UART_write(uart, "\x0d", 1);
             mq_send(*mqdes , (char *)buffer, sizeof(buffer), 0);
+            SerialWrite("message sent to radio\n\0");
         }
         i++;
     }
@@ -79,10 +80,17 @@ extern mqd_t MQ_Uart_Sent;
 void *uartsendThread(void *arg0)
 {
     char msg[128];
+    int msglen;
     while (1)
     {
         mq_receive(MQ_Uart_Sent, (char *)msg, sizeof(msg), NULL);
-        UART_write(uart, msg, 1);
+        for (msglen = 0; msglen < 128; msglen++)
+        {
+            if (msg[msglen] == '\0')
+                break;
+        }
+
+        UART_write(uart, msg, msglen);
     }
 }
 

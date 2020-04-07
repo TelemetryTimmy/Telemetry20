@@ -10,6 +10,7 @@
 
 #define UARTBUFFERSIZE 128
 void *uartThread(void *arg0);
-
+void *uartsendThread(void *arg0);
+void SerialWrite(char message[128]);
 
 #endif /* UARTTHREAD_H_ */

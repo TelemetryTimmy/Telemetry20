@@ -18,7 +18,6 @@ ORDERED_OBJS += \
 "./syscfg/ti_devices_config.obj" \
 "./syscfg/ti_radio_config.obj" \
 "./syscfg/ti_drivers_config.obj" \
-"./rfThread.obj" \
 "./uartThread.obj" \
 "./easylink/EasyLink.obj" \
 "../CC1352P1_LAUNCHXL_TIRTOS.cmd" \
@@ -176,8 +175,8 @@ rfEasyLinkTx_copy.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "CC1352P1_LAUNCHXL_fxns.obj" "mainThread.obj" "main_tirtos.obj" "rfEasyLinkTx.obj" "syscfg\ti_easylink_config.obj" "syscfg\ti_devices_config.obj" "syscfg\ti_radio_config.obj" "syscfg\ti_drivers_config.obj" "rfThread.obj" "uartThread.obj" "easylink\EasyLink.obj" 
-	-$(RM) "CC1352P1_LAUNCHXL_fxns.d" "mainThread.d" "main_tirtos.d" "rfEasyLinkTx.d" "syscfg\ti_easylink_config.d" "syscfg\ti_devices_config.d" "syscfg\ti_radio_config.d" "syscfg\ti_drivers_config.d" "rfThread.d" "uartThread.d" "easylink\EasyLink.d" 
+	-$(RM) "CC1352P1_LAUNCHXL_fxns.obj" "mainThread.obj" "main_tirtos.obj" "rfEasyLinkTx.obj" "syscfg\ti_easylink_config.obj" "syscfg\ti_devices_config.obj" "syscfg\ti_radio_config.obj" "syscfg\ti_drivers_config.obj" "uartThread.obj" "easylink\EasyLink.obj" 
+	-$(RM) "CC1352P1_LAUNCHXL_fxns.d" "mainThread.d" "main_tirtos.d" "rfEasyLinkTx.d" "syscfg\ti_easylink_config.d" "syscfg\ti_devices_config.d" "syscfg\ti_radio_config.d" "syscfg\ti_drivers_config.d" "uartThread.d" "easylink\EasyLink.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'
 	-@echo ' '

@@ -12,6 +12,7 @@ uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/s
 uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stddef.h
 uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/_ti_config.h
 uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/linkage.h
+uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/string.h
 uartThread.obj: ../uartThread.h
 uartThread.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/GPIO.h
 uartThread.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/UART.h
@@ -26,7 +27,7 @@ uartThread.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/posix/ccs/
 uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/../include/signal.h
 uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/../include/sys/timespec.h
 uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/sys/_timespec.h
-uartThread.obj: C:/Users/Baker/OneDrive/Uni/Motorsports/CCsworkspace/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_drivers_config.h
+uartThread.obj: C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_drivers_config.h
 uartThread.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/DeviceFamily.h
 uartThread.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/PIN.h
 uartThread.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdbool.h
@@ -43,6 +44,7 @@ C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/sys/_stdint.h:
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stddef.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/_ti_config.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/linkage.h: 
+C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/string.h: 
 ../uartThread.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/GPIO.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/UART.h: 
@@ -57,7 +59,7 @@ C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/posix/ccs/sys/_internal.h:
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/../include/signal.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/../include/sys/timespec.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/sys/_timespec.h: 
-C:/Users/Baker/OneDrive/Uni/Motorsports/CCsworkspace/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_drivers_config.h: 
+C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_drivers_config.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/DeviceFamily.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/PIN.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdbool.h: 

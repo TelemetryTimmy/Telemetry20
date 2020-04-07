@@ -32,6 +32,8 @@
 /* EasyLink API Header files */
 #include "easylink/EasyLink.h"
 
+/* User Libs */
+#include "uartThread.h"
 /***** Defines *****/
 
 
@@ -58,21 +60,21 @@ PIN_Handle pinHandle;
 
 
 
-
+ bool RXMode = false;
  void *rfEasyLinkRxFnx(void *arg0)
 {
-    Display_Handle    display;
-    Display_Params    params;
-
-    Display_Params_init(&params);
-    display = Display_open(Display_Type_UART, &params);
-    if (display == NULL) {
-        // Display_open() failed
-        while(1);
-    }
-
-    Display_printf(display, 1, 0, "Display Driver Booted");
-    Display_close(display);
+//    Display_Handle    display;
+//    Display_Params    params;
+//
+//    Display_Params_init(&params);
+//    display = Display_open(Display_Type_UART, &params);
+//    if (display == NULL) {
+//        // Display_open() failed
+//        while(1);
+//    }
+//
+//    Display_printf(display, 1, 0, "Display Driver Booted");
+//    Display_close(display);
 
     // Initialize the EasyLink parameters to their default values
     EasyLink_Params easyLink_params;
@@ -96,7 +98,10 @@ PIN_Handle pinHandle;
      * EasyLink_setFrequency(868000000);
      */
     uint32_t message_count = 0;
+    SerialWrite("RX Online\n");
     while(1) {
+        if (RXMode)
+        {
         rxPacket.absTime = 0;
         int i;
         for (i = 0; i < EASYLINK_MAX_DATA_LENGTH; i++)
@@ -109,14 +114,17 @@ PIN_Handle pinHandle;
               {
                   /* Toggle RLED to indicate RX */
                   PIN_setOutputValue(pinHandle, CONFIG_PIN_RLED,!PIN_getOutputValue(CONFIG_PIN_RLED));
-                  Display_open(Display_Type_UART, &params);
-                  Display_printf(display, 1, 0, "Received message %d", message_count++);
+//                  Display_open(Display_Type_UART, &params);
+//                  Display_printf(display, 1, 0, "Received message %d", message_count++);
+                  SerialWrite("Received message: ");
       //            for (uint8_t i = 0; i < rxPacket.len; i++)
       //            {
       //                radio_
       //            }
-                  Display_printf(display, 0, 0, "message payload %s, Packet Length = %d", rxPacket.payload,rxPacket.len);
-                  Display_close(display);
+                  SerialWrite((char *)rxPacket.payload);
+                  SerialWrite("\n");
+//                  Display_printf(display, 0, 0, "message payload %s, Packet Length = %d", rxPacket.payload,rxPacket.len);
+//                  Display_close(display);
 
 
 
@@ -128,6 +136,9 @@ PIN_Handle pinHandle;
                   PIN_setOutputValue(pinHandle, CONFIG_PIN_RLED,!PIN_getOutputValue(CONFIG_PIN_RLED));
                   message_count = 0;
               }
+        }
+        else
+             Task_sleep(5000);
 
     }
 }

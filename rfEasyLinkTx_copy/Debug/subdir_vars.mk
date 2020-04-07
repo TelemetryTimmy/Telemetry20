@@ -20,7 +20,6 @@ C_SRCS += \
 ./syscfg/ti_devices_config.c \
 ./syscfg/ti_radio_config.c \
 ./syscfg/ti_drivers_config.c \
-../rfThread.c \
 ../uartThread.c 
 
 GEN_FILES += \
@@ -41,7 +40,6 @@ C_DEPS += \
 ./syscfg/ti_devices_config.d \
 ./syscfg/ti_radio_config.d \
 ./syscfg/ti_drivers_config.d \
-./rfThread.d \
 ./uartThread.d 
 
 OBJS += \
@@ -53,7 +51,6 @@ OBJS += \
 ./syscfg/ti_devices_config.obj \
 ./syscfg/ti_radio_config.obj \
 ./syscfg/ti_drivers_config.obj \
-./rfThread.obj \
 ./uartThread.obj 
 
 GEN_MISC_FILES += \
@@ -74,7 +71,6 @@ OBJS__QUOTED += \
 "syscfg\ti_devices_config.obj" \
 "syscfg\ti_radio_config.obj" \
 "syscfg\ti_drivers_config.obj" \
-"rfThread.obj" \
 "uartThread.obj" 
 
 GEN_MISC_FILES__QUOTED += \
@@ -92,7 +88,6 @@ C_DEPS__QUOTED += \
 "syscfg\ti_devices_config.d" \
 "syscfg\ti_radio_config.d" \
 "syscfg\ti_drivers_config.d" \
-"rfThread.d" \
 "uartThread.d" 
 
 GEN_FILES__QUOTED += \
@@ -110,7 +105,6 @@ C_SRCS__QUOTED += \
 "./syscfg/ti_devices_config.c" \
 "./syscfg/ti_radio_config.c" \
 "./syscfg/ti_drivers_config.c" \
-"../rfThread.c" \
 "../uartThread.c" 
 
 SYSCFG_SRCS__QUOTED += \

@@ -24,6 +24,8 @@
 /* User libraries*/
 #include "uartThread.h"
 #include "rfEasyLinkRx.h"
+//#include "rfEasyLinkTx.h"
+#include "RFCombinded.h"
 
 
 /* Stack size in bytes */
@@ -32,14 +34,15 @@
 
 // Message Queue's
 #define MSG_SIZE (sizeof(uint8_t)*UARTBUFFERSIZE)
-#define MSG_NUM  4
+#define MSG_NUM  12
 
 mqd_t MQ_UartOUT_RfIN;// message q to send to RF thread from uart thread
+mqd_t MQ_Uart_Sent;
 
 
 /* Pin driver handle */
-static PIN_Handle ledPinHandle;
-static PIN_State ledPinState;
+ PIN_Handle ledPinHandle;
+ PIN_State ledPinState;
 
 PIN_Config pinTable[] = {
     CONFIG_PIN_GLED | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
@@ -51,7 +54,7 @@ PIN_Config pinTable[] = {
  */
 int main(void)
 {
-    pthread_t           rfThread,UART;
+    pthread_t           rfThread,RFSend,UART,UARTSend;
     pthread_attr_t      attrs;
     struct sched_param  priParam;
     int                 retc;
@@ -63,7 +66,13 @@ int main(void)
     mqAttrs_UartOUT_RfIN.mq_maxmsg = MSG_NUM;
     mqAttrs_UartOUT_RfIN.mq_msgsize = MSG_SIZE;
     mqAttrs_UartOUT_RfIN.mq_flags = 0;
-    MQ_UartOUT_RfIN = mq_open ("alarm", O_RDWR | O_CREAT,
+    MQ_UartOUT_RfIN = mq_open ("uartin", O_RDWR | O_CREAT | O_NONBLOCK,
+                    0664, &mqAttrs_UartOUT_RfIN);
+    if (MQ_UartOUT_RfIN == (mqd_t)-1) {
+      /* mq_open() failed */
+      while (1);
+    }
+    MQ_Uart_Sent = mq_open ("uartout", O_RDWR | O_CREAT,
                     0664, &mqAttrs_UartOUT_RfIN);
     if (MQ_UartOUT_RfIN == (mqd_t)-1) {
       /* mq_open() failed */
@@ -83,7 +92,7 @@ int main(void)
       pthread_attr_init(&attrs);
 
       /* Set priority, detach state, and stack size attributes */
-      priParam.sched_priority = 2;
+      priParam.sched_priority = 4;
       retc = pthread_attr_setschedparam(&attrs, &priParam);
       retc |= pthread_attr_setdetachstate(&attrs, PTHREAD_CREATE_DETACHED);
       retc |= pthread_attr_setstacksize(&attrs, THREADSTACKSIZE);
@@ -92,7 +101,7 @@ int main(void)
           while (1) {}
       }
 
-      retc = pthread_create(&rfThread, &attrs, rfEasyLinkRxFnx, (void *)&MQ_UartOUT_RfIN);
+//      retc = pthread_create(&rfThread, &attrs, rfEasyLinkRxFnx, (void *)&MQ_UartOUT_RfIN);
       if (retc != 0) {
           /* pthread_create() failed */
           while (1) {}
@@ -101,6 +110,20 @@ int main(void)
       /* Set UART thread Priority and create thread */
       priParam.sched_priority = 1;
       retc = pthread_create(&UART, &attrs, uartThread, (void *)&MQ_UartOUT_RfIN);
+      if (retc != 0) {
+          /* pthread_create() failed */
+          while (1) {}
+      }
+
+      priParam.sched_priority = 2;
+      retc = pthread_create(&UARTSend, &attrs, uartsendThread, NULL);
+      if (retc != 0) {
+          /* pthread_create() failed */
+          while (1) {}
+      }
+
+      priParam.sched_priority = 3;
+      retc = pthread_create(&RFSend, &attrs, rfEasyLinkTxFnx, (void *)&MQ_UartOUT_RfIN);
       if (retc != 0) {
           /* pthread_create() failed */
           while (1) {}

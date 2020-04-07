@@ -13,8 +13,8 @@ SYSCFG_SRCS += \
 
 C_SRCS += \
 ../CC1352P1_LAUNCHXL_fxns.c \
+../RFCombinded.c \
 ../main_tirtos.c \
-../rfEasyLinkRx.c \
 ./syscfg/ti_easylink_config.c \
 ./syscfg/ti_devices_config.c \
 ./syscfg/ti_radio_config.c \
@@ -32,8 +32,8 @@ GEN_MISC_DIRS += \
 
 C_DEPS += \
 ./CC1352P1_LAUNCHXL_fxns.d \
+./RFCombinded.d \
 ./main_tirtos.d \
-./rfEasyLinkRx.d \
 ./syscfg/ti_easylink_config.d \
 ./syscfg/ti_devices_config.d \
 ./syscfg/ti_radio_config.d \
@@ -42,8 +42,8 @@ C_DEPS += \
 
 OBJS += \
 ./CC1352P1_LAUNCHXL_fxns.obj \
+./RFCombinded.obj \
 ./main_tirtos.obj \
-./rfEasyLinkRx.obj \
 ./syscfg/ti_easylink_config.obj \
 ./syscfg/ti_devices_config.obj \
 ./syscfg/ti_radio_config.obj \
@@ -61,8 +61,8 @@ GEN_MISC_DIRS__QUOTED += \
 
 OBJS__QUOTED += \
 "CC1352P1_LAUNCHXL_fxns.obj" \
+"RFCombinded.obj" \
 "main_tirtos.obj" \
-"rfEasyLinkRx.obj" \
 "syscfg\ti_easylink_config.obj" \
 "syscfg\ti_devices_config.obj" \
 "syscfg\ti_radio_config.obj" \
@@ -77,8 +77,8 @@ GEN_MISC_FILES__QUOTED += \
 
 C_DEPS__QUOTED += \
 "CC1352P1_LAUNCHXL_fxns.d" \
+"RFCombinded.d" \
 "main_tirtos.d" \
-"rfEasyLinkRx.d" \
 "syscfg\ti_easylink_config.d" \
 "syscfg\ti_devices_config.d" \
 "syscfg\ti_radio_config.d" \
@@ -93,8 +93,8 @@ GEN_FILES__QUOTED += \
 
 C_SRCS__QUOTED += \
 "../CC1352P1_LAUNCHXL_fxns.c" \
+"../RFCombinded.c" \
 "../main_tirtos.c" \
-"../rfEasyLinkRx.c" \
 "./syscfg/ti_easylink_config.c" \
 "./syscfg/ti_devices_config.c" \
 "./syscfg/ti_radio_config.c" \

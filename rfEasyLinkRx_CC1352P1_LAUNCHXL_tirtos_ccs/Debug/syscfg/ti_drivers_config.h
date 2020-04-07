@@ -53,8 +53,6 @@ extern "C" {
 /* Externs */
 extern const PIN_Config BoardGpioInitTable[];
 
-/* XDS110 UART, Parent Signal: CONFIG_UART_1 TX, (DIO13) */
-#define CONFIG_PIN_2    0x0000000d
 /* CONFIG_RF_24GHZ (DIO28) */
 #define CONFIG_RF_24GHZ    0x0000001c
 /* CONFIG_RF_HIGH_PA (DIO29) */
@@ -65,6 +63,8 @@ extern const PIN_Config BoardGpioInitTable[];
 #define CONFIG_PIN_RLED    0x00000006
 /* LaunchPad LED Green, Parent Signal: CONFIG_GPIO_GLED GPIO Pin, (DIO7) */
 #define CONFIG_PIN_GLED    0x00000007
+/* XDS110 UART, Parent Signal: CONFIG_UART_0 TX, (DIO13) */
+#define CONFIG_PIN_0    0x0000000d
 /* XDS110 UART, Parent Signal: CONFIG_UART_0 RX, (DIO12) */
 #define CONFIG_PIN_1    0x0000000c
 
@@ -81,16 +81,10 @@ extern const PIN_Config BoardGpioInitTable[];
 
 /*
  *  TX: DIO13
- *  RX: Unassigned
- *  XDS110 UART
- */
-#define CONFIG_UART_1               0
-/*
- *  TX: Unassigned
  *  RX: DIO12
  *  XDS110 UART
  */
-#define CONFIG_UART_0               1
+#define CONFIG_UART_0               0
 
 
 /*

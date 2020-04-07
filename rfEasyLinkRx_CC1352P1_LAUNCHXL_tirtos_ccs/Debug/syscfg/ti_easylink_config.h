@@ -49,16 +49,13 @@ extern "C"
 #define EASYLINK_ADDR_SIZE                  1
 
 //! \brief Enables or disables address filtering
-#define EASYLINK_ENABLE_ADDR_FILTERING      true
+#define EASYLINK_ENABLE_ADDR_FILTERING      false
 
-//! \brief Defines the number of Rx address filters
+//! \brief Defines the number of Rx Address filters
 #define EASYLINK_NUM_ADDR_FILTER           1
 
-//! \brief The table for setting the Rx address filters
-#define EASYLINK_ADDR_FILTER_TABLE \
-    {\
-        0xAA,\
-    }
+//! \brief The table for setting the Rx Address Filters
+#define EASYLINK_ADDR_FILTER_TABLE          {0xAA}
 
 //! \brief Defines the time for the radio to return to idle after inactivity
 #define EASYLINK_IDLE_TIMEOUT               EasyLink_ms_To_RadioTime(1)
@@ -68,7 +65,7 @@ extern "C"
 
 //! \brief Defines the relative time from async RX start to timeout. A value of
 //! 0 means no timeout
-#define EASYLINK_ASYNC_RX_TIMEOUT           EasyLink_ms_To_RadioTime(0)
+#define EASYLINK_ASYNC_RX_TIMEOUT           EasyLink_ms_To_RadioTime(50)
 
 //! \brief Minimum CCA back-off window in units of
 //! EASYLINK_CCA_BACKOFF_TIMEUNITS, as a power of 2

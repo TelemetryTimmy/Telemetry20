@@ -102,8 +102,6 @@ const GPIOCC26XX_Config GPIOCC26XX_config = {
 #include <ti/drivers/pin/PINCC26XX.h>
 
 const PIN_Config BoardGpioInitTable[] = {
-    /* XDS110 UART, Parent Signal: CONFIG_UART_1 TX, (DIO13) */
-    CONFIG_PIN_2 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MED,
     /* CONFIG_RF_24GHZ (DIO28) */
     CONFIG_RF_24GHZ | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
     /* CONFIG_RF_HIGH_PA (DIO29) */
@@ -114,6 +112,8 @@ const PIN_Config BoardGpioInitTable[] = {
     CONFIG_PIN_RLED | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MED,
     /* LaunchPad LED Green, Parent Signal: CONFIG_GPIO_GLED GPIO Pin, (DIO7) */
     CONFIG_PIN_GLED | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MED,
+    /* XDS110 UART, Parent Signal: CONFIG_UART_0 TX, (DIO13) */
+    CONFIG_PIN_0 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MED,
     /* XDS110 UART, Parent Signal: CONFIG_UART_0 RX, (DIO12) */
     CONFIG_PIN_1 | PIN_INPUT_EN | PIN_PULLDOWN | PIN_IRQ_DIS,
 
@@ -304,12 +304,11 @@ static void rfDriverCallback(RF_Handle client, RF_GlobalEvent events, void *arg)
 #include <ti/devices/cc13x2_cc26x2/inc/hw_memmap.h>
 #include <ti/devices/cc13x2_cc26x2/inc/hw_ints.h>
 
-#define CONFIG_UART_COUNT 2
+#define CONFIG_UART_COUNT 1
 
 UARTCC26XX_Object uartCC26XXObjects[CONFIG_UART_COUNT];
 
 static unsigned char uartCC26XXRingBuffer0[32];
-static unsigned char uartCC26XXRingBuffer1[32];
 
 static const UARTCC26XX_HWAttrsV2 uartCC26XXHWAttrs[CONFIG_UART_COUNT] = {
   {
@@ -320,24 +319,8 @@ static const UARTCC26XX_HWAttrsV2 uartCC26XXHWAttrs[CONFIG_UART_COUNT] = {
     .powerMngrId        = PowerCC26XX_PERIPH_UART0,
     .ringBufPtr         = uartCC26XXRingBuffer0,
     .ringBufSize        = sizeof(uartCC26XXRingBuffer0),
-    .rxPin              = PIN_UNASSIGNED,
-    .txPin              = IOID_13,
-    .ctsPin             = PIN_UNASSIGNED,
-    .rtsPin             = PIN_UNASSIGNED,
-    .txIntFifoThr       = UARTCC26XX_FIFO_THRESHOLD_1_8,
-    .rxIntFifoThr       = UARTCC26XX_FIFO_THRESHOLD_4_8,
-    .errorFxn           = NULL
-  },
-  {
-    .baseAddr           = UART1_BASE,
-    .intNum             = INT_UART1_COMB,
-    .intPriority        = (~0),
-    .swiPriority        = 0,
-    .powerMngrId        = PowerCC26X2_PERIPH_UART1,
-    .ringBufPtr         = uartCC26XXRingBuffer1,
-    .ringBufSize        = sizeof(uartCC26XXRingBuffer1),
     .rxPin              = IOID_12,
-    .txPin              = PIN_UNASSIGNED,
+    .txPin              = IOID_13,
     .ctsPin             = PIN_UNASSIGNED,
     .rtsPin             = PIN_UNASSIGNED,
     .txIntFifoThr       = UARTCC26XX_FIFO_THRESHOLD_1_8,
@@ -347,15 +330,10 @@ static const UARTCC26XX_HWAttrsV2 uartCC26XXHWAttrs[CONFIG_UART_COUNT] = {
 };
 
 const UART_Config UART_config[CONFIG_UART_COUNT] = {
-    {   /* CONFIG_UART_1 */
+    {   /* CONFIG_UART_0 */
         .fxnTablePtr = &UARTCC26XX_fxnTable,
         .object      = &uartCC26XXObjects[0],
         .hwAttrs     = &uartCC26XXHWAttrs[0]
-    },
-    {   /* CONFIG_UART_0 */
-        .fxnTablePtr = &UARTCC26XX_fxnTable,
-        .object      = &uartCC26XXObjects[1],
-        .hwAttrs     = &uartCC26XXHWAttrs[1]
     },
 };
 

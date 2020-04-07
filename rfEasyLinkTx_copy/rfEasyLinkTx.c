@@ -21,7 +21,7 @@
 #include <pthread.h>
 
 /* TI-RTOS Header files */
-#include <ti/drivers/PIN.h>
+//#include <ti/drivers/PIN.h>
 
 /* Board Header files */
 #include "ti_drivers_config.h"
@@ -46,8 +46,8 @@ Task_Struct txTask;    /* not static so you can see in ROV */
 //static uint8_t txTaskStack[RFEASYLINKTX_TASK_STACK_SIZE];
 
 /* Pin driver handle */
-static PIN_Handle pinHandle;
-static PIN_State pinState;
+//static PIN_Handle pinHandle;
+//static PIN_State pinState;
 
 //#define CONFIG_PIN_GLED CONFIG_PIN_3 //Green
 //#define CONFIG_PIN_RLED CONFIG_PIN_0 //Red
@@ -55,36 +55,35 @@ static PIN_State pinState;
  * Application LED pin configuration table:
  *   - All LEDs board LEDs are off.
  */
-PIN_Config pinTable[] = {
-    CONFIG_PIN_GLED | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
-    CONFIG_PIN_RLED | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
-    PIN_TERMINATE
-};
+//PIN_Config pinTable[] = {
+//    CONFIG_PIN_GLED | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
+//    CONFIG_PIN_RLED | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
+//    PIN_TERMINATE
+//};
 
 //static uint16_t seqNumber;
 
-void RXSetup(void)
-{
-    /* Call driver init functions. */
-
-
-    /* Open LED pins */
-    pinHandle = PIN_open(&pinState, pinTable);
-    Assert_isTrue(pinHandle != NULL, NULL);
-
-    /* Clear LED pins */
-    PIN_setOutputValue(pinHandle, CONFIG_PIN_GLED, 0);
-    PIN_setOutputValue(pinHandle, CONFIG_PIN_RLED, 0);
-}
+//void RXSetup(void)
+//{
+//    /* Call driver init functions. */
+//
+//
+//    /* Open LED pins */
+//    pinHandle = PIN_open(&pinState, pinTable);
+//    Assert_isTrue(pinHandle != NULL, NULL);
+//
+//    /* Clear LED pins */
+//    PIN_setOutputValue(pinHandle, CONFIG_PIN_GLED, 0);
+//    PIN_setOutputValue(pinHandle, CONFIG_PIN_RLED, 0);
+//}
 
 
 void *rfEasyLinkTxFnx(void *arg0)
 {
-    uint8_t txBurstSize = 0;
-    uint32_t absTime;
+
     mqd_t      *mqdes = arg0;
 
-    RXSetup();
+//    RXSetup();
     // Initialize the EasyLink parameters to their default values
     EasyLink_Params easyLink_params;
     EasyLink_Params_init(&easyLink_params);
@@ -164,13 +163,13 @@ void *rfEasyLinkTxFnx(void *arg0)
         if (result == EasyLink_Status_Success)
         {
             /* Toggle GLED to indicate TX */
-            PIN_setOutputValue(pinHandle, CONFIG_PIN_GLED,!PIN_getOutputValue(CONFIG_PIN_GLED));
+//            PIN_setOutputValue(pinHandle, CONFIG_PIN_GLED,!PIN_getOutputValue(CONFIG_PIN_GLED));
         }
         else
         {
             /* Toggle GLED and RLED to indicate error */
-            PIN_setOutputValue(pinHandle, CONFIG_PIN_GLED,!PIN_getOutputValue(CONFIG_PIN_GLED));
-            PIN_setOutputValue(pinHandle, CONFIG_PIN_RLED,!PIN_getOutputValue(CONFIG_PIN_RLED));
+//            PIN_setOutputValue(pinHandle, CONFIG_PIN_GLED,!PIN_getOutputValue(CONFIG_PIN_GLED));
+//            PIN_setOutputValue(pinHandle, CONFIG_PIN_RLED,!PIN_getOutputValue(CONFIG_PIN_RLED));
         }
 
     }

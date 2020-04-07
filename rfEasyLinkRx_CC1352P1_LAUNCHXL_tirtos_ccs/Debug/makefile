@@ -6,13 +6,13 @@ SHELL = cmd.exe
 
 CG_TOOL_ROOT := C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS
 
-GEN_OPTS__FLAG := --cmd_file="C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/configPkg/compiler.opt"
-GEN_CMDS__FLAG := -l"C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/configPkg/linker.cmd"
+GEN_OPTS__FLAG := --cmd_file="C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/configPkg/compiler.opt"
+GEN_CMDS__FLAG := -l"C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/configPkg/linker.cmd"
 
 ORDERED_OBJS += \
 "./CC1352P1_LAUNCHXL_fxns.obj" \
+"./RFCombinded.obj" \
 "./main_tirtos.obj" \
-"./rfEasyLinkRx.obj" \
 "./syscfg/ti_easylink_config.obj" \
 "./syscfg/ti_devices_config.obj" \
 "./syscfg/ti_radio_config.obj" \
@@ -154,10 +154,10 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@$(MAKE) --no-print-directory -Onone "rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs.out"
 
 dependents:
-	-cd C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug && $(MAKE) clean all
+	-cd C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug && $(MAKE) all
 
 # Tool invocations
-rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs.lib
+rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs.lib
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
 	"C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=DeviceFamily_CC13X2 -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs.map" -i"C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source" -i"C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/kernel/tirtos/packages" -i"C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs_linkInfo.xml" --rom_model -o "rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs.out" $(ORDERED_OBJS)
@@ -174,15 +174,15 @@ rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "CC1352P1_LAUNCHXL_fxns.obj" "main_tirtos.obj" "rfEasyLinkRx.obj" "syscfg\ti_easylink_config.obj" "syscfg\ti_devices_config.obj" "syscfg\ti_radio_config.obj" "syscfg\ti_drivers_config.obj" "uartThread.obj" "easylink\EasyLink.obj" 
-	-$(RM) "CC1352P1_LAUNCHXL_fxns.d" "main_tirtos.d" "rfEasyLinkRx.d" "syscfg\ti_easylink_config.d" "syscfg\ti_devices_config.d" "syscfg\ti_radio_config.d" "syscfg\ti_drivers_config.d" "uartThread.d" "easylink\EasyLink.d" 
+	-$(RM) "CC1352P1_LAUNCHXL_fxns.obj" "RFCombinded.obj" "main_tirtos.obj" "syscfg\ti_easylink_config.obj" "syscfg\ti_devices_config.obj" "syscfg\ti_radio_config.obj" "syscfg\ti_drivers_config.obj" "uartThread.obj" "easylink\EasyLink.obj" 
+	-$(RM) "CC1352P1_LAUNCHXL_fxns.d" "RFCombinded.d" "main_tirtos.d" "syscfg\ti_easylink_config.d" "syscfg\ti_devices_config.d" "syscfg\ti_radio_config.d" "syscfg\ti_drivers_config.d" "uartThread.d" "easylink\EasyLink.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'
 	-@echo ' '
 
 .PHONY: all clean dependents
 .SECONDARY:
-C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs.lib:
+C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs/Debug/tirtos_builds_CC1352P1_LAUNCHXL_release_ccs.lib:
 
 -include ../makefile.targets
 

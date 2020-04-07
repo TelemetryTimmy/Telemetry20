@@ -82,7 +82,7 @@ main_tirtos.obj: C:/ti/ccs930/xdctools_3_60_02_34_core/packages/xdc/runtime/IGat
 main_tirtos.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/kernel/tirtos/packages/ti/sysbios/BIOS__epilogue.h
 main_tirtos.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/kernel/tirtos/packages/ti/sysbios/package/BIOS_RtsGateProxy.h
 main_tirtos.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/posix/ccs/mqueue.h
-main_tirtos.obj: C:/Users/Baker/OneDrive/Uni/Motorsports/CCsworkspace/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_drivers_config.h
+main_tirtos.obj: C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_drivers_config.h
 main_tirtos.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/DeviceFamily.h
 main_tirtos.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/PIN.h
 main_tirtos.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdbool.h
@@ -100,9 +100,10 @@ main_tirtos.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/
 main_tirtos.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/cc13x2_cc26x2/driverlib/rf_prop_cmd.h
 main_tirtos.obj: C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/cc13x2_cc26x2/driverlib/rf_ble_cmd.h
 main_tirtos.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdlib.h
-main_tirtos.obj: C:/Users/Baker/OneDrive/Uni/Motorsports/CCsworkspace/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_easylink_config.h
+main_tirtos.obj: C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_easylink_config.h
 main_tirtos.obj: ../uartThread.h
 main_tirtos.obj: ../rfEasyLinkRx.h
+main_tirtos.obj: ../RFCombinded.h
 
 ../main_tirtos.c: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdint.h: 
@@ -186,7 +187,7 @@ C:/ti/ccs930/xdctools_3_60_02_34_core/packages/xdc/runtime/IGateProvider.h:
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/kernel/tirtos/packages/ti/sysbios/BIOS__epilogue.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/kernel/tirtos/packages/ti/sysbios/package/BIOS_RtsGateProxy.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/posix/ccs/mqueue.h: 
-C:/Users/Baker/OneDrive/Uni/Motorsports/CCsworkspace/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_drivers_config.h: 
+C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_drivers_config.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/DeviceFamily.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/drivers/PIN.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdbool.h: 
@@ -204,6 +205,7 @@ C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/string.h:
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/cc13x2_cc26x2/driverlib/rf_prop_cmd.h: 
 C:/ti/simplelink_cc13x2_26x2_sdk_3_40_00_02/source/ti/devices/cc13x2_cc26x2/driverlib/rf_ble_cmd.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdlib.h: 
-C:/Users/Baker/OneDrive/Uni/Motorsports/CCsworkspace/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_easylink_config.h: 
+C:/Users/Baker/OneDrive/Uni/Motorsports/Production_Workspace/Telemetry20/rfEasyLinkRx_CC1352P1_LAUNCHXL_tirtos_ccs/Debug/syscfg/ti_easylink_config.h: 
 ../uartThread.h: 
 ../rfEasyLinkRx.h: 
+../RFCombinded.h: 
