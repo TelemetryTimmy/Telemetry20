@@ -1,3 +1,6 @@
 [submodule "TCAN4550_CC1352P"]
 	path = TCAN4550_CC1352P
 	url = https://github.com/bakerboy908/TCAN4550_CC1352P.git
+[submodule "Telemetry2020/UART"]
+	path = Telemetry2020/UART
+	url = https://github.com/bakerboy908/SimpleLink_UART_Modules-RTOS-
