@@ -44,22 +44,29 @@
 
 #include <ti/drivers/Board.h>
 
-extern void *mainThread(void *arg0);
+/* User libaries  */
+#include "SimpleLink_UART_Modules(RTOS)/uartThread.h"
+//#include "TCAN4550_CC1352P/CANThread.h"
+
+
 
 /* Stack size in bytes */
-#define THREADSTACKSIZE    1024
+#define THREADSTACKSIZE 1024
 
-/*
- *  ======== main ========
+/**
+ * @brief Initulize the RTOS and setup all main threads
+ * 
+ * @return int should never return.
  */
 int main(void)
 {
-    pthread_t           thread;
-    pthread_attr_t      attrs;
-    struct sched_param  priParam;
-    int                 retc;
+    pthread_t uartSend, uartRec; //!< thread stacks
+    pthread_attr_t attrs;        //!< used for setting up threads
+    struct sched_param priParam; //!<used for setting thread priority
+    int retc;                    //!< used for error checking
 
     Board_init();
+    UARTSetup();
 
     /* Initialize the attributes structure with default values */
     pthread_attr_init(&attrs);
@@ -69,15 +76,30 @@ int main(void)
     retc = pthread_attr_setschedparam(&attrs, &priParam);
     retc |= pthread_attr_setdetachstate(&attrs, PTHREAD_CREATE_DETACHED);
     retc |= pthread_attr_setstacksize(&attrs, THREADSTACKSIZE);
-    if (retc != 0) {
+    if (retc != 0)
+    {
         /* failed to set attributes */
-        while (1) {}
+        while (1)
+        {
+        }
     }
 
-    retc = pthread_create(&thread, &attrs, mainThread, NULL);
-    if (retc != 0) {
+    retc = pthread_create(&uartSend, &attrs, uartSendThread, NULL);
+    if (retc != 0)
+    {
         /* pthread_create() failed */
-        while (1) {}
+        while (1)
+        {
+        }
+    }
+    priParam.sched_priority = 2;
+    retc = pthread_create(&uartRec, &attrs, uartRecThread, NULL);
+    if (retc != 0)
+    {
+        /* pthread_create() failed */
+        while (1)
+        {
+        }
     }
 
     BIOS_start();
