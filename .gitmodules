@@ -1,6 +1,3 @@
-[submodule "SimpleLink_UART_Modules-RTOS-"]
-	path = SimpleLink_UART_Modules-RTOS-
-	url = https://github.com/bakerboy908/SimpleLink_UART_Modules-RTOS-.git
 [submodule "TCAN4550_CC1352P"]
 	path = TCAN4550_CC1352P
 	url = https://github.com/bakerboy908/TCAN4550_CC1352P.git
